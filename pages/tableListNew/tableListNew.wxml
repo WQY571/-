@@ -1,0 +1,234 @@
+<!-- 表单 -->
+<view>
+<view class="iptWarp">
+<van-row>
+<van-col span="24">
+  <view class="center">
+      <van-row>
+          <van-col offset="6" span="18"><view class="title">广州市XXXXXX医院</view></van-col>
+      </van-row>
+      <van-row>
+          <van-col offset="3" span="21"><view class="title_s">新型冠状病毒流行病学史筛查表</view></van-col>
+      </van-row>
+      <view  class="titlecenter">目前，针对新型冠状病毒感染肺炎，广东省已启动重大突发公共卫生事件的一级响应，根据相关规定，请如实填写以下信息，否则将承担相应法律责任！！！</view>
+      <!-- <view class="titlename">广州市中西医结合医院</view>         -->
+      <!-- <view class="titledata">2020年2月1日</view> -->
+  </view>
+</van-col>
+</van-row>
+
+<view class="saveFrom" wx:if='{{showEwm}}'>
+<view class="saveCenton">
+
+      <view class="savetitle">保存成功</view>
+      <view class="saveJie">（截图保存）</view>
+      <image src="{{imageSre}}"></image>
+</view>
+<!-- <button hover-class="none" class="submit" bindtap="handblack">返回</button> -->
+<!-- <button hover-class="none" class="submit" bindtap="handWai">外部跳转</button> -->
+</view>
+
+<view class="fromCenter">
+<view class="centerTittle">一、基本信息</view>
+  <view class="flex_y_center border">
+      <view class="ipt_key">姓名</view>
+      <input class="flex_1" bindinput="bindinput" value="" data-key="patientName" disabled="{{nodisplay}}"></input>
+    </view>
+    <view class="flex_y_center border">
+      <view class="ipt_key">年龄:</view>
+      <input class="flex_1"  type="number" bindinput="bindinput" value="" data-key="age" disabled="{{nodisplay}}"></input>
+    </view>
+    
+    <view class="flex_y_center border">
+      <view class="ipt_key">性别:</view>
+      <view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChangeisagex">
+                <radio color="#409EFF" class="radio" wx:for-items="{{sexDate}}" wx:key="index" value="{{item.name}}" checked="{{item.checked}}" disabled="{{nodisplay}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+      </view>
+
+    </view>
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>现居住地：</view>
+       <view class="ipt_key addTop">省市区：</view>
+        <picker class="flex_1" mode='region' bindchange="bindinput"  data-key="cityData" value="{{region}}" disabled="{{nodisplay}}">
+          <view class="c_gray " wx:if='{{cityHidden}}'>请选择城市</view>
+          <view wx:else>{{region[0]}} - {{region[1]}} - {{region[2]}}</view>
+        </picker>
+     
+      <view class="ipt_key addTop">街道：</view>
+      <input class="flex_1" bindinput="bindinput" value="" data-key="street" placeholder="如：平安街道" disabled="{{nodisplay}}"></input>
+      <view class="ipt_key">住址（详细到门牌号）：</view>
+      <input class="flex_1" bindinput="bindinput" value="{{ipt.phoneNumber}}" data-key="housingEstate" placeholder="如：平安小区3栋6楼601" disabled="{{nodisplay}}"></input>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>联系电话（本人或者监护人）</view>
+      <input class="flex_1" bindinput="bindinput" value="" data-key="phoneNumber" disabled="{{nodisplay}}"></input>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>身份证（本人或者监护人）</view>
+      <input class="flex_1" bindinput="bindinput" value="" data-key="idCard" disabled="{{nodisplay}}"></input>
+    </view>
+<view class="centerTittle2">二、是否有以下接触史（请如实填写以下情况，谢谢配合）</view>
+  <view class="flex_y_center border">
+    <view class="ipt_key">1.近2周内是否曾去过<view class="foucs">湖北省或温州市</view></view>
+    <view class="page__bd">
+      <view class="section section_gap">
+          <radio-group class="radio-group" bindchange="radioChangeisTohubei">
+              <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}" disabled="{{nodisplay}}">
+                  <text>{{item.value}}</text>
+              </radio>
+          </radio-group>
+      </view>
+    </view>
+  </view>
+
+  <view class="flex_y_center border">
+    <view class="ipt_key">2．近2周内是否曾搭乘过始发<view class="foucs">湖北省</view>或<view class="foucs">温州市</view>或<view class="foucs">途径湖北</view>的<view class="foucs">交通工具</view>（飞机,火车,汽车,轮船等）？</view>
+    <view class="page__bd">
+      <view class="section section_gap">
+          <radio-group class="radio-group" bindchange="radioChangeisToHubeiOrWenzhouTwoWeekByVehicle">
+              <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}" disabled="{{nodisplay}}">
+                  <text>{{item.value}}</text>
+              </radio>
+          </radio-group>
+      </view>
+    </view>
+  </view>
+
+  <view class="flex_y_center border">
+    <view class="ipt_key">3．近2周内是否接触过来自于<view class="foucs">湖北省或温州市的人员</view>（或共同外出聚餐、游玩等）？</view>
+    <view class="page__bd">
+      <view class="section section_gap">
+          <radio-group class="radio-group" bindchange="radioChangeisTouchFromHubeiOrWenzhou">
+              <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}" disabled="{{nodisplay}}">
+                  <text>{{item.value}}</text>
+              </radio>
+          </radio-group>
+      </view>
+    </view>
+  </view>
+
+  
+  <view class="flex_y_center border">
+    <view class="ipt_key">4．您在发病前14天内是否与<view class="foucs">新型冠状病毒感染者有接触史</view>？</view>
+    <view class="page__bd">
+      <view class="section section_gap">
+          <radio-group class="radio-group" bindchange="radioChangeisTouchNovelCoronaviruserTwoWeek">
+              <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}" disabled="{{nodisplay}}">
+                  <text>{{item.value}}</text>
+              </radio>
+          </radio-group>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="flex_y_center border">
+    <view class="ipt_key">5．您所居住的小区是否有<view class="foucs">新型冠脉病毒肺炎患者</view>？</view>
+    <view class="page__bd">
+      <view class="section section_gap">
+          <radio-group class="radio-group" bindchange="radioChangeisHaveNovelCoronaviruserHousingEstate">
+              <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}" disabled="{{nodisplay}}">
+                  <text>{{item.value}}</text>
+              </radio>
+          </radio-group>
+      </view>
+    </view>
+  </view>
+
+  <view class="flex_y_center border">
+    <view class="ipt_key">6．聚集性发病（您周围是否有聚集性的类似病例）？</view>
+    <view class="page__bd">
+      <view class="section section_gap">
+          <radio-group class="radio-group" bindchange="radioChangeaggregationDisease">
+              <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}" disabled="{{nodisplay}}">
+                  <text>{{item.value}}</text>
+              </radio>
+          </radio-group>
+      </view>
+    </view>
+  </view>
+
+  <view class="centerTittle">三、临床表现：是否有以下症状？</view>
+    <view class="flex_y_center border">
+    <view class="ipt_key">1．近2周内是否出现过<view class="foucs">发热</view>？</view>
+    <view class="page__bd">
+      <view class="section section_gap">
+          <radio-group class="radio-group" bindchange="radioChangeisFeverTwoWeek">
+              <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}" disabled="{{nodisplay}}">
+                  <text>{{item.value}}</text>
+              </radio>
+          </radio-group>
+      </view>
+    </view>
+  </view>
+
+  <view class="flex_y_center border">
+    <view class="ipt_key">2．如有发热（如无发热可跳过改项）</view>
+    <view class="hotTime">发热总天数 
+    <input class="timeData" bindinput="bindinput" type="number" value="" data-key="feverDayCount" placeholder="" disabled="{{nodisplay}}"></input>
+    </view>
+
+    <view class="hotTime">每天最高体温为
+    <input class="timeData" bindinput="bindinput" type="number" value="" data-key="highestTemperature" placeholder="" disabled="{{nodisplay}}">
+    
+    </input>
+    ℃
+    </view>
+
+    <view class="hotTime"> 您目前的体温为
+    <input class="timeData" bindinput="bindinput" value="" data-key="currentTemperature" placeholder="" disabled="{{nodisplay}}">
+    
+    </input>
+    ℃（如未测量则写“ 不清楚 ”）
+    </view>
+  </view>
+
+  <view class="flex_y_center border">
+    <view class="ipt_key">3．发热期间是否有服用过退热药或感冒药物?</view>
+    <view class="page__bd">
+      <view class="section section_gap">
+          <radio-group class="radio-group" bindchange="radioChangeisTakeMedicineInFeve">
+              <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}" disabled="{{nodisplay}}">
+                  <text>{{item.value}}</text>
+              </radio>
+          </radio-group>
+      </view>
+    </view>
+  </view>
+
+
+    <view class="flex_y_center border">
+      <view class="ipt_key">4.目前身体健康状况【至少选择一项】</view>
+      <checkbox-group bindchange="checkboxChangehealthyCondition">
+      <label class="checkbox" wx:for="{{healthy}}" wx:key="index">
+        <checkbox color="#409EFF" value="{{item.name}}" checked="{{item.checked}}" disabled="{{nodisplay}}"/>{{item.value}}
+      </label>
+    </checkbox-group>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key">填写人签名(患者或家属)：</view>
+      <input class="flex_1" bindinput="bindinput" value="" data-key="writeSignature" disabled="{{nodisplay}}"></input>
+      <view class="ipt_key">填写时间：{{writeDatetime}}</view>
+      {{}}
+    </view>
+    
+    <button hover-class="none" class="submit" catchtap="submit">提交</button>
+  </view>
+</view>
+
+
+<van-popup show="{{ showbtn }}" bind:close="onClose">
+  请勿重复提交
+<view class="countData">{{count}} s</view>
+</van-popup>
+</view>
+

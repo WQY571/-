@@ -1,0 +1,251 @@
+<!-- 表单 -->
+<view>
+<view class="iptWarp">
+
+
+<van-row>
+<van-col span="24">
+  <view class="center">
+      <!-- <van-row>
+          <van-col offset="6" span="18"><view class="title">广州市中西医结合医院</view></van-col>
+      </van-row> -->
+      <view  class="titlecenter">广州市的市民朋友们，鉴于当前新型冠状病毒感染的肺炎疫情形势严峻，为了保护您和周边人员的健康，请如实慎报以下信息，谢谢您的配合！</view>
+      <!-- <view class="titlename">广州市中西医结合医院</view>         -->
+      <view class="titledata">2020年2月1日</view>
+  </view>
+</van-col>
+</van-row>
+<view class="saveFrom" wx:if='{{showEwm}}'>
+<view class="saveCenton">
+
+      <view class="savetitle">保存成功</view>
+      <view class="saveJie">（截图保存）</view>
+      <image src="{{imageSre}}"></image>
+</view>
+</view>
+<view class="fromCenter">
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>1.您的姓名</view>
+      <input class="flex_1" bindinput="bindinput" value="" data-key="patientName"></input>
+    </view>
+    <view class="flex_y_center border">
+      <view class="ipt_key">2.您的年龄:</view>
+      <input class="flex_1"  type="number" bindinput="bindinput" value="" data-key="age"></input>
+    </view>
+    
+    <view class="flex_y_center border">
+      <view class="ipt_key">3.您的性别:</view>
+      <view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChangeisagex">
+                <radio color="#409EFF" class="radio" wx:for-items="{{sexDate}}" wx:key="index" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+      </view>
+
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>4.您的家庭住址：</view>
+      <view class="ipt_key addTop">街道：</view>
+      <input class="flex_1" bindinput="bindinput" value="" data-key="addrStreet" placeholder="如：平安街道"></input>
+      <view class="ipt_key">住址（详细到门牌号）：</view>
+      <input class="flex_1" bindinput="bindinput" value="" data-key="addrHouse" placeholder="如：平安小区3栋6楼601"></input>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>5.您的手机号码:</view>
+      <input class="flex_1"  type="number" bindinput="bindinput" value="{{ipt.phoneNumber}}" data-key="phoneNumber"></input>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>6.您的身份证号码:</view>
+      <input class="flex_1" bindinput="bindinput" value="" data-key="idCard"></input>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key">7.您的单位：</view>
+      <input class="flex_1"  bindinput="bindinput" value="" data-key="company"></input>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>8.14天内是否有到过武汉及周边地区，或其他有病例报告社区的旅行史或居住史</view>
+      <view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChangeisTohubei">
+                <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+      </view>
+    </view>
+    <view class="flex_y_center border" wx:if='{{ipt.isTohubei ==1 ?true:false}}'>
+      <view class="ipt_key">9.如果有，请填写接触者名称，接触地点及接触时间</view>
+      <input class="flex_1"  bindinput="bindinput" value="" data-key="tohubeiDetail"></input>
+    </view>
+    <!-- 新增 -->
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>10.14天内是否与新型冠状病毒感染者（核酸检测阳性者）有接触史？</view>
+      <view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChangeisTouchInfected">
+                <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>11.14天内是否曾接触来自武汉市及周边地区，或来自病例报告社区的发热或有呼吸道症状的患者</view>
+      <view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChangeisFromhubeiRelatives">
+                <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+      </view>
+    </view>
+
+    <view class="flex_y_center border" wx:if='{{ipt.isFromhubeiRelatives ==1 ?true:false}}'>
+      <view class="ipt_key">12.如果有，请填写接触者名称，接触地点及接触时间</view>
+      <input class="flex_1"  bindinput="bindinput" value="" data-key="frombubeiRelativesDetail"></input>
+    </view>
+
+    <!-- 新增 -->
+
+    <view class="flex_y_center border">
+      <view class="ipt_key">13.发病时间</view>
+      <input class="flex_1" readonly="readonly"  bindinput="bindinput" value="{{ipt.onseTime}}" bindtap="showPopup" data-key="frombubeiRelativesDetail"></input>
+    </view>
+    <!-- 新增 -->
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>14.聚集性发病</view>
+      <view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChangeisClusterOnset">
+                <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+      </view>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>15.您将选择的就诊医院是</view>
+      <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="bindPickerChange">
+                <radio color="#409EFF" class="radio" wx:for-items="{{array}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>16.自1月14日以来是否有亲戚朋友从湖北省以外的地区来访</view>
+      <view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChangeisNohubeiRelatives">
+                <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+      </view>
+    </view>
+
+    <view class="flex_y_center border" wx:if='{{ipt.isNohubeiRelatives==1 ?true:false}}'>
+      <view class="ipt_key">17.如果有，请填写亲戚朋友的城市名字和来访时间</view>
+      <input class="flex_1"  bindinput="bindinput" value="" data-key="nohubeiRelativesDetail"></input>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>18.目前身体健康状况【至少选择一项】</view>
+      <checkbox-group bindchange="checkboxChangehealthyCondition">
+      <label class="checkbox" wx:for="{{healthy}}" wx:key="index">
+        <checkbox color="#409EFF" value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+      其他：<input class="flex_1"  bindinput="bindinput" value="" data-key="otherHealthyCondition"></input>
+    </checkbox-group>
+    </view>
+
+
+    <view class="flex_y_center border">
+      <view class="ipt_key"><view class="mustWirte">*</view>19.是否去过医院就诊</view>
+      <view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChangeisHospitalize">
+                <radio color="#409EFF" class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+      </view>
+    </view>
+
+    <view class="flex_y_center border" wx:if='{{ipt.isHospitalize==1 ?true:false}}'>
+      <view class="ipt_key">20.如有到医院就诊请填写医院名称及就诊时间</view>
+      <input class="flex_1"  bindinput="bindinput" value="" data-key="hospitalizeDetail"></input>
+    </view>
+
+    <view class="flex_y_center border" wx:if='{{ipt.isHospitalize==1 ?true:false}}'>
+      <view class="ipt_key">21.如有就医请填写医生诊断结果</view>
+      <input class="flex_1"  bindinput="bindinput" value="" data-key="doctorDiagnosis"></input>
+    </view>
+
+    <view class="flex_y_center border">
+      <view class="ipt_key">22.如有请填写陪同人姓名</view>
+      <input class="flex_1"  bindinput="bindinput" value="" data-key="companions"></input>
+    </view>
+    <view class="flex_y_center border">
+      <view class="ipt_key">23.如有请填写陪同人电话</view>
+      <input class="flex_1"  bindinput="bindinput" value="" data-key="companionsPhone"></input>
+    </view>
+
+    
+
+    <view class="flex_y_center border">
+      <view class="ipt_key">24.其他情况</view>
+      <input class="flex_1"  bindinput="bindinput" value="" data-key="otherCondition"></input>
+    </view>
+
+    <button hover-class="none" class="submit" catchtap="submit">提交</button>
+  </view>
+</view>
+
+
+<van-popup show="{{ showbtn }}" bind:close="onClose">
+  请勿重复提交
+<view class="countData">{{count}} s</view>
+</van-popup>
+</view>
+
+
+<van-popup
+
+  show="{{ showbottom }}"
+  position="bottom"
+  custom-style="height: 45%"
+  bindtap="onClose"
+>
+<van-datetime-picker
+ formatter="{{ formatter }}"
+  type="datetime"
+  value="{{ currentDate }}"
+  min-date="{{ minDate }}"
+  max-date="{{ maxDate }}"
+  bind:input="onInput"
+  bind:confirm="confirmFn1"
+/>
+</van-popup>

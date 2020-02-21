@@ -1,0 +1,180 @@
+/* pages/tableList/tableList.wxss */
+.title{
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #606266;
+  line-height: 55rpx;
+}
+.title_s{
+  font-size: 38rpx;
+  font-weight: 600;
+  color: #606266;
+  line-height: 55rpx;
+}
+.center{
+  padding-left: 30rpx;
+  border-bottom: 1px solid #606266;
+  height: 400rpx;
+  font-size: 35rpx;
+  padding-right: 10rpx; 
+}
+.titlecenter{
+    text-align: left;
+    display: inline-block;
+    margin-top: 30rpx;
+    line-height: 58rpx;
+    color: #606266;
+}
+.titlename{
+    display: block;
+    float: right;
+    width: 100%;
+    text-align: right;
+    margin-right: 20rpx;
+}
+.titledata{
+    display: block;
+    float: right;
+    margin-right: 20rpx;
+    line-height: 60rpx;
+}
+.mustWirte{
+  display: initial;
+  color: red;
+  padding: 5rpx;
+}
+.flex_y_center{
+  color: #606266;
+  padding: 20rpx 15rpx 15rpx 15rpx;
+   background-color: #efeff0; 
+  margin-bottom: 40rpx;
+  font-size: 35rpx;
+}
+.flex_1{
+      -webkit-appearance: none;
+    background-color: #FFF;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #DCDFE6;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    height: 80rpx;
+    line-height: 80rpx;
+    outline: 0;
+    padding: 0rpx 30rpx;
+    margin-top: 30rpx;
+    -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    width: 100%;
+}
+.addTop{
+  margin-top: 16rpx;
+}
+.fromCenter{
+  padding: 20rpx;
+}
+.radio{
+  background-color: white;
+    padding: 10rpx 30rpx 50rpx 30rpx;
+    border-radius: 4px;
+    border: 1px solid #DCDFE6;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 80rpx;
+    margin-right: 55rpx;
+    margin-bottom: 20rpx;
+
+}
+radio .wx-radio-input{
+  width: 30rpx;
+  height: 30rpx;
+}
+.section{
+  margin-top: 30rpx;
+}
+.submit{
+  color: #FFF;
+  background-color: #409EFF;
+  border-color: #409EFF;
+}
+.checkbox{
+  display: block;
+  height: 60rpx;
+}
+checkbox .wx-checkbox-input{
+  width: 40rpx;
+  height: 40rpx;
+}
+.free-button{
+  color: #409EFF;
+}
+.van-popup--center{
+  padding: 50rpx;
+}
+.countData{
+  text-align: center;
+}
+.savetitle{
+  font-size: 42rpx;
+  font-weight: 600;
+  margin-top: 20rpx;
+}
+.saveCenton{
+  text-align: center;
+}
+.saveJie{
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-top: 20rpx;
+}
+.saveCenton image{
+  width: 500rpx;
+  height: 500rpx;
+}
+.foucs{
+ display: initial;
+font-weight: 600;
+}
+.timeData{
+    -webkit-appearance: none;
+    background-color: #FFF;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #DCDFE6;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    height: 80rpx;
+    line-height: 80rpx;
+    outline: 0;
+    padding: 0rpx 30rpx;
+    margin-top: 30rpx;
+    -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    width: 150rpx;
+
+}
+.hotTime{
+
+}
+.centerTittle{
+  height: 70rpx;
+line-height: 70rpx;
+font-weight: 600;
+font-size: 36rpx;
+color: #606266;
+
+}
+.centerTittle2{
+  height: 150rpx;
+line-height: 70rpx;
+font-weight: 600;
+font-size: 36rpx;
+color: #606266;
+
+}

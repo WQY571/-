@@ -1,0 +1,42 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.wxbtn{
+  background-color:#07c160;
+  font-weight: 400;
+  color: white;
+  margin-top: 50rpx;
+}
+.iphonebtn{
+  background-color:#409EFF;
+  font-weight: 400;
+  color: white;
+  margin-top: 50rpx;
+}
+.van-field__input{
+  width: 80% !important;
+  height: 80rpx !important;
+  border: 1px solid #DCDFE6 !important;
+  padding: 20rpx 30rpx 30rpx 20rpx !important;
+}
+.van-cell{
+  margin-top: 10%;
+}

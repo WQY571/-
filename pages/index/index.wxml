@@ -1,0 +1,33 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <open-data type="userAvatarUrl"></open-data>
+    <open-data type="userNickName"></open-data>
+    <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button> -->
+    <!-- <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block> -->
+    <button wx:if="{{showBtn}}" class="wxbtn" open-type="getPhoneNumber" bindgetphonenumber="getWxPhoneNumber">微信快捷登录</button>
+    <view wx:else >
+     <button class="iphonebtn" bindtap="getOld">原版</button> 
+     <button class="iphonebtn" bindtap="getNew">番禺</button>
+    </view>
+  </view>
+  <!-- <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+  <!-- 手机号码弹出层 -->
+  <van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 25%"
+  bind:close="onClose"
+>
+
+</van-popup>
+
+
+
+</view>
